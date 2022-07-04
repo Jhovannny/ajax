@@ -20,6 +20,17 @@ Puesto: ${data.puesto} <br>
 Edad: ${data.edad} <br>
 `
 );
+$('leerArray').click(function(e){
+e.preventDefault();
+$.get("empleados.json",function(data){
+console.data(data);
+$.each(data, function (index, item) { 
+    $('#leerArraylista').html($('#leerArraylista').html()+`
+    <li> ${item.nombre} -- ${item.puesto} </li>
+    `);
+});
+});
+});
 });
 });
 });
