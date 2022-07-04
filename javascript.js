@@ -45,7 +45,30 @@ $(document).ready(function () {
                 $('#listaEmpleados').html($('#listaEmpleados').html()+`
                 <li> ${item.nombre} -- ${item.puesto} </li>
                 `);
+
+
            });
         });
     });
+
+
+
+
+    let empleados;
+    $.getJSON("empleados.json",function(data){
+        empleados=data.empleados;//datos del json
+    });
+    $('#nombre').keyup(function (e) { 
+        $('#listaEmpleados').html('');
+        let nombre=$(this).val();
+        $.each(empleados, function (indexInArray, item) { 
+            if(item.nombre.toLowerCase().indexOf(nombre.toLowerCase())!==-1){//buscar el empleado
+                $('#listaEmpleados').html($('#listaEmpleados').html()+`
+                <li> ${item.nombre} -- ${item.puesto} </li>
+                `);
+            }
+        });
+    });
+
 });
+
