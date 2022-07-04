@@ -10,4 +10,16 @@ $(document).ready(function () {
        
         }   );
     });
+$('#empleados').click(function(e){
+e.preventDefault();
+$.get("empleados.json", function(data){
+console.log(data);
+$('#empleados').html(`
+Nombre: ${data.nombre} <br>
+Puesto: ${data.puesto} <br>
+Edad: ${data.edad} <br>
+`
+);
+});
+});
 });
